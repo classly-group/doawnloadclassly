@@ -1,7 +1,7 @@
 name: Build MacOS App
 
 on: 
-  workflow_dispatch: # Permet de lancer la compilation manuellement
+  workflow_dispatch: # Pour lancer la compilation manuellement
 
 jobs:
   build:
@@ -23,7 +23,6 @@ jobs:
 
       - name: Build with PyInstaller
         run: |
-          # Commande spécifique pour inclure CustomTkinter sur Mac
           python -m PyInstaller --noconfirm --onedir --windowed \
           --add-data "$(python -c 'import customtkinter; print(customtkinter.__path__[0])'):customtkinter/" \
           app_with_pdf.py
